@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './Side.css';
 import {assets} from '../assets/assets'
 const Side = () => {
-    const [extend, setExtend] = useState(false);
+    const [extend, setExtend] = useState(true);
   return (
     <div className='sidebar'>
         <div className='top'>
