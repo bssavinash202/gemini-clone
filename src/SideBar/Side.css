@@ -29,10 +29,12 @@
 .sidebar .recent{
     display: flex;
     flex-direction: column;
+    
 }
 .sidebar .recent-title{
     margin-top: 30px;
     margin-bottom: 20px;
+    animation: fadeIn 1.5s;
 }
 .sidebar .recent-entry{
     display: flex;
@@ -43,6 +45,7 @@
     border-radius: 50px;
     color: #282828;
     cursor: pointer;
+    animation: fadeIn 1.5s;
 }
 .sidebar .recent-entry:hover{
     background-color: #e2e6eb;
@@ -55,3 +58,18 @@
     padding-right: 10px;
     cursor: pointer;
 }
+@keyframes fadeIn {
+    0%{
+      opacity: o;
+    }
+    100%{
+      opacity: 1;
+    }
+  }
+  @media(max-width:600px){
+    .sidebar{
+        display: none;
+    }
+  }
+
+  

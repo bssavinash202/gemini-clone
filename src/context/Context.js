@@ -17,15 +17,29 @@ import run from "../config/Gemini";
             setResultData(prevPrompt=>prevPrompt+nextWord);
             },75*index)
         }
+        const newChat = () =>{
+            setLoading(false)
+            setShowResult(false)
+        }
 
     const onSent = async (prompt) =>{
         setResultData('');
         setLoading(true)
         setShowResult(true)
-        setRecentPrompt(inputState)
-        const response = await run(inputState)
+        let response;
+        if(prompt!== undefined){
+            response = await run(prompt)
+            setRecentPrompt(prompt)
+        }
+        else{
+            setPrevPrompt(prevPrompt=>[...prevPrompt,inputState])
+            setRecentPrompt(inputState)
+            response = await run(inputState)
+
+        }
         let responseArray = response.split("**");
-        let newResponse;
+        
+        let newResponse = '';
         for(let i=0; i< responseArray.length; i++)
         {
                 if(i===0||i%2!==1){
@@ -58,7 +72,7 @@ import run from "../config/Gemini";
         resultData,
         inputState,
         setInputState,
-        
+        newChat
     }
     return (
         <Context.Provider value={ContextValue}>
